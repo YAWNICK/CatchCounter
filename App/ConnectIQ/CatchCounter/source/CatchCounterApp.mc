@@ -1,6 +1,8 @@
 using Toybox.Application;
 using Toybox.WatchUi;
 
+var page = 0;
+
 class CatchCounterApp extends Application.AppBase {
 
     function initialize() {

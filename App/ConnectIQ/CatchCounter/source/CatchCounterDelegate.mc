@@ -6,7 +6,7 @@ class CatchCounterDelegate extends WatchUi.BehaviorDelegate {
 
     var parentView;
 
-    function initialize() {
+    function initialize(view) {
         BehaviorDelegate.initialize();
         parentView = view;
     }
@@ -20,7 +20,7 @@ class CatchCounterDelegate extends WatchUi.BehaviorDelegate {
         var key = keyEvent.getKey();
         if (key == KEY_ENTER) {
             if (parentView.sending == false) {
-                parendView.beginSending();
+                parentView.beginSending();
             } else {
                 parentView.endSending();
             }
