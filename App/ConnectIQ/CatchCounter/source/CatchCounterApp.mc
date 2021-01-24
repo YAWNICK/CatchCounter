@@ -17,7 +17,9 @@ class CatchCounterApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        return [ new CatchCounterView(), new CatchCounterDelegate() ];
+        var view = new CatchCounterView();
+        var viewDelegate = new CatchCounterDelegate(view);
+        return [view, viewDelegate];
     }
 
 }
