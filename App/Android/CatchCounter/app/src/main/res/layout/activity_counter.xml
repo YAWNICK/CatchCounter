@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CounterActivity">
+
+
+    <TextView
+        android:id="@+id/selectedDeviceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Selected Device:"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deviceNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="No device selected"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/selectedDeviceTextView" />
+
+    <TextView
+        android:id="@+id/callToActionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Begin Recording by pressing Start in the Connect IQ App!"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/deviceNameTextView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/catchCountLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toTopOf="@id/catchesCaptionTextView"
+        app:layout_constraintTop_toBottomOf="@id/callToActionTextView">
+
+        <TextView
+            android:id="@+id/catchCountTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="0"
+            android:textSize="150sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/catchesCaptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:text="Catches"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/resetButton"/>
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Reset Counter"
+        app:layout_constraintBottom_toTopOf="@id/openAppButton">
+
+    </Button>
+
+    <Button
+        android:id="@+id/openAppButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Open App on Garmin Device"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.jannik.catchcounter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.garmin.android.connectiq.ConnectIQ;
+import com.garmin.android.connectiq.IQApp;
 import com.garmin.android.connectiq.IQDevice;
 import com.garmin.android.connectiq.exception.InvalidStateException;
 import com.garmin.android.connectiq.exception.ServiceUnavailableException;
@@ -18,6 +20,9 @@ import com.garmin.android.connectiq.exception.ServiceUnavailableException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String CIQ_APP_ID = "a3421feed289106a538cb9547ab12096";
+    public static final String IQ_DEVICE = "IQDevice";
 
     private ConnectIQ connectIQ;
     private CIQDeviceAdapter deviceAdapter;
@@ -65,12 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 IQDevice device = deviceAdapter.getItem(position);
-                IQDevice.IQDeviceStatus status = device.getStatus();
-                if (status == IQDevice.IQDeviceStatus.CONNECTED) {
-                    Toast.makeText(MainActivity.this, "Yes, connected device!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Nope, not a connected device!", Toast.LENGTH_SHORT).show();
-                }
+                forwardToCounter(device);
             }
         });
 
@@ -125,6 +125,32 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (InvalidStateException | ServiceUnavailableException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void forwardToCounter(IQDevice device) {
+        IQDevice.IQDeviceStatus status = device.getStatus();
+        if (status == IQDevice.IQDeviceStatus.CONNECTED) {
+            Toast.makeText(MainActivity.this, "Yes, connected device!", Toast.LENGTH_SHORT).show();
+            try {
+                connectIQ.getApplicationInfo(CIQ_APP_ID, device, new ConnectIQ.IQApplicationInfoListener() {
+                    @Override
+                    public void onApplicationInfoReceived(IQApp iqApp) {
+                        Intent intent = new Intent(MainActivity.this, CounterActivity.class);
+                        intent.putExtra(MainActivity.IQ_DEVICE, device);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onApplicationNotInstalled(String s) {
+                        Toast.makeText(MainActivity.this, "Install the CIQ App first!", Toast.LENGTH_LONG).show();
+                    }
+                });
+            } catch (InvalidStateException | ServiceUnavailableException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "Connect your device first!", Toast.LENGTH_SHORT).show();
         }
     }
 }

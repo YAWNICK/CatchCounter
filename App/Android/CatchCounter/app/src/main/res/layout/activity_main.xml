@@ -30,6 +30,7 @@
             android:text="Select your Device"
             android:textSize="20sp" />
 
+
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,10 +38,10 @@
 
         <Button
             android:id="@+id/buttonRefresh"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Refresh" />
+
 
     </LinearLayout>
 
