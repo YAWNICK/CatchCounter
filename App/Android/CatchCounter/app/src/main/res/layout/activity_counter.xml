@@ -23,6 +23,7 @@
         android:layout_margin="8dp"
         android:text="No device selected"
         android:textSize="30sp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/selectedDeviceTextView" />
 
     <TextView
@@ -49,6 +50,7 @@
             android:layout_height="match_parent"
             android:text="0"
             android:textSize="150sp"
+            android:textColor="@color/black"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -63,6 +65,7 @@
         android:gravity="center"
         android:text="Catches"
         android:textSize="40sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/resetButton"/>
 
     <Button
