@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     public void forwardToCounter(IQDevice device) {
         IQDevice.IQDeviceStatus status = device.getStatus();
         if (status == IQDevice.IQDeviceStatus.CONNECTED) {
-            Toast.makeText(MainActivity.this, "Yes, connected device!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Yes, connected device!", Toast.LENGTH_SHORT).show();
             try {
                 connectIQ.getApplicationInfo(CIQ_APP_ID, device, new ConnectIQ.IQApplicationInfoListener() {
                     @Override

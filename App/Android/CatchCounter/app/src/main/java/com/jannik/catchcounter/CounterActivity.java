@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,9 +15,6 @@ import com.garmin.android.connectiq.IQDevice;
 import com.garmin.android.connectiq.exception.InvalidStateException;
 import com.garmin.android.connectiq.exception.ServiceUnavailableException;
 
-import org.w3c.dom.Text;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class CounterActivity extends AppCompatActivity {
@@ -98,7 +94,6 @@ public class CounterActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: set onclick listener for reset button
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +107,7 @@ public class CounterActivity extends AppCompatActivity {
             connectIQ.registerForAppEvents(device, ciqApp, new ConnectIQ.IQApplicationEventListener() {
                 @Override
                 public void onMessageReceived(IQDevice iqDevice, IQApp iqApp, List<Object> list, ConnectIQ.IQMessageStatus iqMessageStatus) {
-
+                    // I should only ever receive one message
                     String msg = null;
                     if (list.size() > 0) {
                         for (Object o : list) {
@@ -165,9 +160,7 @@ public class CounterActivity extends AppCompatActivity {
     private void openAppOnDevice() {
         try {
             connectIQ.openApplication(device, ciqApp, openApplicationListener);
-        } catch (InvalidStateException e) {
-            e.printStackTrace();
-        } catch (ServiceUnavailableException e) {
+        } catch (InvalidStateException | ServiceUnavailableException e) {
             e.printStackTrace();
         }
     }
