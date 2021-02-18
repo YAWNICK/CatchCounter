@@ -2,6 +2,7 @@ using Toybox.Application;
 using Toybox.WatchUi;
 
 var page = 0;
+var DEBUG = true;
 
 class CatchCounterApp extends Application.AppBase {
 

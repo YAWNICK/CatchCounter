@@ -72,12 +72,17 @@ class CatchCounterView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (page == 0) {
-            dc.drawText(dc.getWidth() / 2, 20, Graphics.FONT_MEDIUM, "Idle", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 20, Graphics.FONT_MEDIUM, "Use the Start/Stop", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 50, Graphics.FONT_MEDIUM, "Button to begin/end", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 80, Graphics.FONT_MEDIUM, "recording your juggling.", Graphics.TEXT_JUSTIFY_CENTER);
         } else {
-            dc.drawText(dc.getWidth() / 2, 20, Graphics.FONT_MEDIUM, "Sending", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 20, Graphics.FONT_MEDIUM, "Now", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 80, Graphics.FONT_LARGE, "JUGGLE!", Graphics.TEXT_JUSTIFY_CENTER);
         }
-        dc.drawText(dc.getWidth() / 2, 50, Graphics.FONT_MEDIUM, "OK: " + tlog.twin, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(dc.getWidth() / 2, 80, Graphics.FONT_MEDIUM, "FAIL: " + tlog.twin, Graphics.TEXT_JUSTIFY_CENTER);
+        if (DEBUG == true) {
+            dc.drawText(dc.getWidth() / 2, 140, Graphics.FONT_MEDIUM, "OK: " + tlog.twin, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, 160, Graphics.FONT_MEDIUM, "FAIL: " + tlog.tfail, Graphics.TEXT_JUSTIFY_CENTER);
+        }
     }
 
     // Called when this View is removed from the screen. Save the

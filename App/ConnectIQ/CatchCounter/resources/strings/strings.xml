@@ -1,6 +1,6 @@
 <strings>
-    <string id="AppName">${appName}</string>
-
+    <!-- <string id="AppName">${appName}</string> -->
+    <string id="AppName">Catch Counter</string>
     <string id="prompt">Click the menu button</string>
 
     <string id="menu_label_1">Item 1</string>
