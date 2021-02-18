@@ -21,7 +21,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String CIQ_APP_ID = "a3421feed289106a538cb9547ab12096";
+    //public static final String CIQ_APP_ID = "a3421feed289106a538cb9547ab12096";
+    public static final String CIQ_APP_ID = "01ee9b77-f982-41a8-94a5-d14dd91edf70";
     public static final String IQ_DEVICE = "IQDevice";
 
     private ConnectIQ connectIQ;
