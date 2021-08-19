@@ -1,4 +1,7 @@
 # CatchCounter
+### Demo Video
+https://youtu.be/SSTXHXLsrTM
+
 ### Description
 This is my university project for a course on mobile computing and IoT. The Android app is able to count juggling catches 
 based on accelerometer data streamed to the phone from a Garmin watch which is worn while juggling. 
